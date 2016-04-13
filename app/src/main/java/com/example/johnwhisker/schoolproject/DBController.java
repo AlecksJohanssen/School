@@ -1,5 +1,6 @@
 package com.example.johnwhisker.schoolproject;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
@@ -30,16 +31,9 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBController extends AppCompatActivity {
+public class DBController {
     public static final String MyPreferences = "MyPrefs";
-    TextView lbl;
-    int score = 0;
-    int qid =3;
-    ListView lv;
-    final Context context = this;
-    ListAdapter adapter;
     private Context myContext;
-    Question queryQ;
     private static String DB_PATH = "/data/data/com.example.johnwhisker.schoolproject/databases/";
     private static String DB_NAME ="school.db";
     SQLiteDatabase myDataBase;
@@ -49,10 +43,8 @@ public class DBController extends AppCompatActivity {
     public DBController(Context context) {
         myContext = context;
     }
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_make_test);
+
+    public void onCreate() {
         try {
             fileLink = Environment.getExternalStorageDirectory().getAbsolutePath();
             Log.d("1234", "d1: " + fileLink);
@@ -70,14 +62,13 @@ public class DBController extends AppCompatActivity {
             getAllProducts();
         } catch (ActivityNotFoundException e) {
             e.printStackTrace();
-            lbl.setText("No activity can handle picking a file. Showing alternatives.");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
     private void copydatabase() throws IOException {
-        InputStream myinput = getAssets().open(DB_NAME);
+        InputStream myinput = myContext.getAssets().open(DB_NAME);
         String outfilename = fileLink;
         Log.d("1234", "e " + fileLink);
         File file = new File(outfilename);
@@ -95,19 +86,19 @@ public class DBController extends AppCompatActivity {
     }
     public List<Question> getAllProducts() {
         List<Question> quesList = new ArrayList<Question>();
-        String selectQuery = "SELECT * FROM Question";
+        String selectQuery = "SELECT * FROM Question ORDER BY ID DESC";
         Question quest = new Question();
         Cursor cursor = myDataBase.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
-                quest.setID(cursor.getInt(0));
-                quest.setQUESTION(cursor.getString(1));
-                quest.setOPTA(cursor.getString(2));
-                quest.setOPTB(cursor.getString(3));
-                quest.setOPTC(cursor.getString(4));
-                quest.setOPTD(cursor.getString(5));
-                quest.setANSWER(cursor.getString(6));
-                quesList.add(quest);
+                    quest.setID(cursor.getInt(0));
+                    quest.setQUESTION(cursor.getString(1));
+                    quest.setOPTA(cursor.getString(2));
+                    quest.setOPTB(cursor.getString(3));
+                    quest.setOPTC(cursor.getString(4));
+                    quest.setOPTD(cursor.getString(5));
+                    quest.setANSWER(cursor.getString(6));
+                    quesList.add(quest);
             } while (cursor.moveToNext());
         }
         return quesList;

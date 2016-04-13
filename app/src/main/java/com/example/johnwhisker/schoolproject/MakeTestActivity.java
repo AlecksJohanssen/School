@@ -24,26 +24,20 @@ import android.widget.Toast;
 
 import com.example.johnwhisker.schoolproject.Activities.ShowResult;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MakeTestActivity extends AppCompatActivity {
     List<Question> quesList;
     int score=0;
     int qid=0;
-    Question currentQ;
     private TextView etQuestion;
     private TextView etAnswer1;
     private TextView etAnswer2;
     private TextView etAnswer3;
     private TextView etAnswer4;
+    int getID ;
+    Question currentQ = new Question();
+    int x = currentQ.getID();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,8 +48,9 @@ public class MakeTestActivity extends AppCompatActivity {
         etAnswer2 = (TextView) findViewById(R.id.etAnswer2);
         etAnswer3 = (TextView) findViewById(R.id.etAnswer3);
         etAnswer4 = (TextView) findViewById(R.id.etAnswer4);
+        db.onCreate();
         quesList=db.getAllProducts();
-        currentQ=quesList.get(qid);
+        currentQ = quesList.get(x);
         setQuestionView();
         etAnswer1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,46 +84,49 @@ public class MakeTestActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.make_test_menu, menu);
         return true;
     }
-    private void setQuestionView()
-    {
-        etQuestion.setText(currentQ.getQUESTION());
-        etAnswer1.setText(currentQ.getOPTA());
-        etAnswer2.setText(currentQ.getOPTB());
-        etAnswer3.setText(currentQ.getOPTC());
-        etAnswer4.setText(currentQ.getOPTD());
-        qid++;
-    }
-public void getAnswer(String answerString)
-{
-    if(currentQ.getANSWER().equals(answerString))
-    {
+public void getAnswer(String answerString) {
+    if (currentQ.getANSWER().equals(answerString)) {
         score++;
-        Toast.makeText(MakeTestActivity.this,"YOUR SCORE IS NOW "+score,Toast.LENGTH_SHORT).show();
-    }else {
+        Toast.makeText(MakeTestActivity.this, "YOUR SCORE IS NOW " + score, Toast.LENGTH_SHORT).show();
+    } else {
         // if unlucky start activity and finish the game
         Intent intent = new Intent(MakeTestActivity.this,
                 ShowResult.class);
         // passing the int value
+        Bundle b = new Bundle();
+        b.putInt("score", score); // Your score
+        intent.putExtras(b); // Put your score to your next
+        startActivity(intent);
+        finish();
+    }
+    if (x < 20) {
+        currentQ = quesList.get(x);
+
+        setQuestionView();
+    }
+    else {
+        // if over do this
+        Intent intent = new Intent(MakeTestActivity.this,
+                ShowResult.class);
         Bundle b = new Bundle();
         b.putInt("core", score); // Your score
         intent.putExtras(b); // Put your score to your next
         startActivity(intent);
         finish();
     }
-    if (qid < 20) {
-    // if questions are not over then do this
-    currentQ = quesList.get(qid);
-    setQuestionView();
-} else {
-    // if over do this
-    Intent intent = new Intent(MakeTestActivity.this,
-            ShowResult.class);
-    Bundle b = new Bundle();
-        b.putInt("core", score); // Your score
-    intent.putExtras(b); // Put your score to your next
-    startActivity(intent);
-    finish();
 }
+
+    private void setQuestionView()
+    {
+        DBController db =new DBController(this);
+        etQuestion.setText(currentQ.getQUESTION());
+        etAnswer1.setText(currentQ.getOPTA());
+        etAnswer2.setText(currentQ.getOPTB());
+        etAnswer3.setText(currentQ.getOPTC());
+        etAnswer4.setText(currentQ.getOPTD());
+        x++;
+        Log.d("currentID",String.valueOf(x));
+
 }
 
 }

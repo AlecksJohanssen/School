@@ -34,7 +34,7 @@ public class Question {
     }
     public int getID()
     {
-        return ID;
+        return ID=0;
     }
     public String getQUESTION() {
         return QUESTION;
