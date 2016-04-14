@@ -31,29 +31,33 @@ import com.firebase.client.ValueEventListener;
 
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MakeTestActivity extends AppCompatActivity {
     List<Question> quesList;
     int score=0;
     Firebase dtb;
-    private TextView etQuestion;
-    private TextView etAnswer1;
-    private TextView etAnswer2;
-    private TextView etAnswer3;
-    private TextView etAnswer4;
+    @Bind(R.id.etQuestion)
+    TextView etQuestion;
+    @Bind(R.id.etAnswer1)
+    TextView etAnswer1;
+    @Bind(R.id.etAnswer2)
+    TextView etAnswer2;
+    @Bind(R.id.etAnswer3)
+    TextView etAnswer3;
+    @Bind(R.id.etAnswer4)
+    TextView etAnswer4;
     Question currentQ = new Question();
     int x = currentQ.getID();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_test);
+        ButterKnife.bind(this);
         Firebase.setAndroidContext(this);
         dtb = new Firebase(Configuration.FIREBASE_URL);
         DBController db=new DBController(this);
-        etQuestion = (TextView) findViewById(R.id.etQuestion);
-        etAnswer1 = (TextView) findViewById(R.id.etAnswer1);
-        etAnswer2 = (TextView) findViewById(R.id.etAnswer2);
-        etAnswer3 = (TextView) findViewById(R.id.etAnswer3);
-        etAnswer4 = (TextView) findViewById(R.id.etAnswer4);
         db.onCreate();
         quesList=db.getAllProducts();
         currentQ = quesList.get(x);

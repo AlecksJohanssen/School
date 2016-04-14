@@ -32,14 +32,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBController {
-    public static final String MyPreferences = "MyPrefs";
     private Context myContext;
     private static String DB_PATH = "/data/data/com.example.johnwhisker.schoolproject/databases/";
     private static String DB_NAME ="school.db";
     SQLiteDatabase myDataBase;
     private String fileLink;
-    public static final int requestcode = 1;
-    SharedPreferences sharedPreferences;
     public DBController(Context context) {
         myContext = context;
     }
