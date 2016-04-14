@@ -26,8 +26,9 @@ public class ShowResult extends AppCompatActivity {
         ButterKnife.bind(this);
         Glide.with(this).load(R.drawable.inside).into(ivInsideCircle);
         Glide.with(this).load(R.drawable.outside).into(ivOutsideCircle);
-        Random rn = new Random();
-        setCircleResult(rn.nextInt(100-0)+1);
+        Bundle b = getIntent().getExtras();
+        int score = b.getInt("score");
+        setCircleResult(score);
 
 
     }

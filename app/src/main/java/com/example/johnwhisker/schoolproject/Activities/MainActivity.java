@@ -36,26 +36,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String MyPreferences = "MyPrefs";
-    TextView lbl;
-    private TextView etQuestion;
-    private TextView etAnswer1;
-    private TextView etAnswer2;
-    private TextView etAnswer3;
-    private TextView etAnswer4;
-    int score = 0;
-    int qid =3;
-    ListView lv;
-    final Context context = this;
-    ListAdapter adapter;
-    private Context myContext;
-    Question queryQ;
-    private static String DB_PATH = "/data/data/com.example.johnwhisker.schoolproject/databases/";
-    private static String DB_NAME ="school.db";
-    SQLiteDatabase myDataBase;
-    private String fileLink;
-    public static final int requestcode = 1;
-    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

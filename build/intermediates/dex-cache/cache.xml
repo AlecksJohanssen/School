@@ -1,3 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\AlecksJohanssen\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-databind\2.2.2\3c8f6018eaa72d43b261181e801e6f8676c16ef6\jackson-databind-2.2.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6">
+        <dex dex="C:\Users\AlecksJohanssen\Desktop\SchoolProject-master\app\build\intermediates\pre-dexed\debug\jackson-databind-2.2.2_be03bd2fdb0a70a1388ed42344b405f0c2268c05.jar" />
+    </item>
+    <item
+        jar="C:\Users\AlecksJohanssen\.gradle\caches\modules-2\files-2.1\com.firebase\tubesock\0.0.12\6ec0bbd3e161a73ed672284b587fd32309a86d7a\tubesock-0.0.12.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6ec0bbd3e161a73ed672284b587fd32309a86d7a">
+        <dex dex="C:\Users\AlecksJohanssen\Desktop\SchoolProject-master\app\build\intermediates\pre-dexed\debug\tubesock-0.0.12_dce20757ded38f6a953d1e18a14d56b18236ca39.jar" />
+    </item>
+    <item
+        jar="C:\Users\AlecksJohanssen\Desktop\SchoolProject-master\app\build\intermediates\exploded-aar\com.commit451\PhotoView\1.2.5\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="526e8a982e8d1453c548b8d3a63968ee61667a15">
+        <dex dex="C:\Users\AlecksJohanssen\Desktop\SchoolProject-master\app\build\intermediates\pre-dexed\debug\com.commit451-PhotoView-1.2.5_95252bc3e346accf353301d862c51c38dbb27cd0.jar" />
+    </item>
+    <item
+        jar="C:\Users\AlecksJohanssen\.gradle\caches\modules-2\files-2.1\com.firebase\firebase-client-android\2.4.0\f00bc767918ad9c89e5c13e25706d033a58e13c2\firebase-client-android-2.4.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="f00bc767918ad9c89e5c13e25706d033a58e13c2">
+        <dex dex="C:\Users\AlecksJohanssen\Desktop\SchoolProject-master\app\build\intermediates\pre-dexed\debug\firebase-client-android-2.4.0_89f3e42160ad659879217b051383d2d8488b1942.jar" />
+    </item>
+    <item
+        jar="C:\Users\AlecksJohanssen\Desktop\SchoolProject-master\app\build\intermediates\exploded-aar\it.sephiroth.android.library.imagezoom\imagezoom\2.2.5\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="406557a6f4369568e5515f8a3c66c97b23f21534">
+        <dex dex="C:\Users\AlecksJohanssen\Desktop\SchoolProject-master\app\build\intermediates\pre-dexed\debug\it.sephiroth.android.library.imagezoom-imagezoom-2.2.5_1af8fb310433524a1b3d5a6826726b226a72ec4e.jar" />
+    </item>
+    <item
+        jar="C:\Users\AlecksJohanssen\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-annotations\2.2.2\285cb9c666f0f0f3dd8a1be04e1f457eb7b15113\jackson-annotations-2.2.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="285cb9c666f0f0f3dd8a1be04e1f457eb7b15113">
+        <dex dex="C:\Users\AlecksJohanssen\Desktop\SchoolProject-master\app\build\intermediates\pre-dexed\debug\jackson-annotations-2.2.2_26d510bba3b9563db1b1ac13097b3658353f64ef.jar" />
+    </item>
+    <item
+        jar="C:\Users\AlecksJohanssen\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.2.2\d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b\jackson-core-2.2.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b">
+        <dex dex="C:\Users\AlecksJohanssen\Desktop\SchoolProject-master\app\build\intermediates\pre-dexed\debug\jackson-core-2.2.2_d133682587c943450db658b61abaae8bc710dbc4.jar" />
+    </item>
+    <item
+        jar="C:\Users\AlecksJohanssen\.gradle\caches\modules-2\files-2.1\com.firebase\firebase-client-jvm\2.4.0\558e074f136fee609b8758480ecd00e286595137\firebase-client-jvm-2.4.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="558e074f136fee609b8758480ecd00e286595137">
+        <dex dex="C:\Users\AlecksJohanssen\Desktop\SchoolProject-master\app\build\intermediates\pre-dexed\debug\firebase-client-jvm-2.4.0_4afd3019b865fc9d5c6634a505122fdcb01e6437.jar" />
+    </item>
+
+</items>

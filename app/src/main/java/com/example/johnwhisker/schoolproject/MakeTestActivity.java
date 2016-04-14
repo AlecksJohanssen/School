@@ -23,25 +23,31 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.johnwhisker.schoolproject.Activities.ShowResult;
+import com.firebase.client.Config;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 import java.util.List;
 
 public class MakeTestActivity extends AppCompatActivity {
     List<Question> quesList;
     int score=0;
-    int qid=0;
+    Firebase dtb;
     private TextView etQuestion;
     private TextView etAnswer1;
     private TextView etAnswer2;
     private TextView etAnswer3;
     private TextView etAnswer4;
-    int getID ;
     Question currentQ = new Question();
     int x = currentQ.getID();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_test);
+        Firebase.setAndroidContext(this);
+        dtb = new Firebase(Configuration.FIREBASE_URL);
         DBController db=new DBController(this);
         etQuestion = (TextView) findViewById(R.id.etQuestion);
         etAnswer1 = (TextView) findViewById(R.id.etAnswer1);
@@ -88,29 +94,17 @@ public void getAnswer(String answerString) {
     if (currentQ.getANSWER().equals(answerString)) {
         score++;
         Toast.makeText(MakeTestActivity.this, "YOUR SCORE IS NOW " + score, Toast.LENGTH_SHORT).show();
-    } else {
-        // if unlucky start activity and finish the game
-        Intent intent = new Intent(MakeTestActivity.this,
-                ShowResult.class);
-        // passing the int value
-        Bundle b = new Bundle();
-        b.putInt("score", score); // Your score
-        intent.putExtras(b); // Put your score to your next
-        startActivity(intent);
-        finish();
     }
-    if (x < 20) {
+    if (x < 3) {
         currentQ = quesList.get(x);
-
         setQuestionView();
     }
     else {
-        // if over do this
         Intent intent = new Intent(MakeTestActivity.this,
                 ShowResult.class);
         Bundle b = new Bundle();
-        b.putInt("core", score); // Your score
-        intent.putExtras(b); // Put your score to your next
+        b.putInt("score", score);
+        intent.putExtras(b);
         startActivity(intent);
         finish();
     }
@@ -128,6 +122,24 @@ public void getAnswer(String answerString) {
         Log.d("currentID",String.valueOf(x));
 
 }
+public void firebaseQuestion()
+{
+    dtb.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                Question ques = postSnapshot.getValue(Question.class);
+                if (!quesList.contains(ques)) {
+                    quesList.add(ques);
+                }
+            }
+        }
+        @Override
+        public void onCancelled(FirebaseError firebaseError) {
 
+        }
+    });
 }
+}
+
 

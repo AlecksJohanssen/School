@@ -86,11 +86,11 @@ public class DBController {
     }
     public List<Question> getAllProducts() {
         List<Question> quesList = new ArrayList<Question>();
-        String selectQuery = "SELECT * FROM Question ORDER BY ID DESC";
-        Question quest = new Question();
+        String selectQuery = "SELECT * FROM Question ORDER BY ID ASC";
         Cursor cursor = myDataBase.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
+                Question quest = new Question();
                     quest.setID(cursor.getInt(0));
                     quest.setQUESTION(cursor.getString(1));
                     quest.setOPTA(cursor.getString(2));
